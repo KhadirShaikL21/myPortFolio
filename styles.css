@@ -11,30 +11,34 @@ body {
     color: #fff;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navbar styles */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: transparent;
-    padding: 20px 50px;
+    padding: 15px 50px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent glassy effect */
+    backdrop-filter: blur(10px); /* Blurring the background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     display: flex;
-    justify-content: space-between; /* Ensures logo is on the left, nav on the right */
+    justify-content: space-between;
     align-items: center;
     z-index: 1000;
+    transition: background-color 0.3s ease; /* Smooth transition on scroll */
 }
 
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    color: #ff0040;
-    flex: 1; /* Ensure the logo takes up the left space */
+header.scrolled {
+    background: rgba(0, 0, 0, 0.7); /* Solid background on scroll */
 }
 
 .nav-links {
-    list-style-type: none;
+    list-style: none;
     display: flex;
-    gap: 30px; /* Adjust the space between links */
-    margin: 0;
+    gap: 30px;
 }
 
 .nav-links li {
@@ -46,7 +50,50 @@ header {
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Hover effect with glassy look */
+}
+
+/* Responsive design for navbar */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Initially hide the nav links */
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+        
+    }
+
+    /* Toggle menu */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+/* Show nav links when toggled */
+.menu-active .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+}
+
 
 .hero {
     display: flex;
